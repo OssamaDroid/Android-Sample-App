@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidSampleApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="app_title">Android Sample App</string>
+    <string name="welcome_message">Welcome On Board !</string>
+    <string name="navigate_to_list_title">Navigate to the List Screen</string>
+    <string name="navigation_title">Navigation</string>
+</resources>
