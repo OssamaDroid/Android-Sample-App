@@ -6,9 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/default_padding"
+    android:layout_marginStart="@dimen/card_view_sides_margin"
+    android:layout_marginEnd="@dimen/card_view_sides_margin"
     app:cardBackgroundColor="@android:color/white"
-    app:cardCornerRadius="3dp"
-    app:cardElevation="2dp"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -20,6 +22,8 @@
         <TextView
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/item_info_text_size"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/bottom_margin_item_info"
             tools:text="item 1" />
@@ -28,6 +32,7 @@
             android:id="@+id/item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/item_info_text_size"
             tools:text="$100.00 (CAD)" />
 
     </LinearLayout>

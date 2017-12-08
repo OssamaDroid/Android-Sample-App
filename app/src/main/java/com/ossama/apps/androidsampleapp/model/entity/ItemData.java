@@ -1,10 +1,12 @@
 package com.ossama.apps.androidsampleapp.model.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by ossama on 12/6/17.
  */
 
-public class ItemData {
+public class ItemData implements Serializable {
 
     private String itemId;
     private String value;

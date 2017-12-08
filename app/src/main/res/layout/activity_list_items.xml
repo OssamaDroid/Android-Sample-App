@@ -30,6 +30,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/list_gray_background"
             android:overScrollMode="never"
             app:layoutManager="LinearLayoutManager" />
 
@@ -45,10 +46,10 @@
             android:id="@+id/no_data_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_gravity="center"
             android:text="@string/no_data_title"
-            android:textSize="@dimen/no_data_text_size" />
+            android:textSize="@dimen/no_data_text_size"
+            android:visibility="gone" />
 
     </FrameLayout>
 

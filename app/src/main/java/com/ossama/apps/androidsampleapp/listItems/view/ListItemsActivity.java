@@ -44,13 +44,13 @@ public class ListItemsActivity extends AppCompatActivity implements ListItemsCon
     protected void onStart() {
         super.onStart();
         listItemsPresenter.attachView(this);
-        listItemsPresenter.loadProducts();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         setToolbar();
+        listItemsPresenter.loadProducts();
     }
 
     @Override
@@ -99,7 +99,9 @@ public class ListItemsActivity extends AppCompatActivity implements ListItemsCon
     // Set the toolbar along with the title within it
     private void setToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         toolbar.setNavigationOnClickListener(
                 listener -> onBackPressed()
         );

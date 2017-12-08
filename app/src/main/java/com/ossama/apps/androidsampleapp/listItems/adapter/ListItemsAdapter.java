@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.ossama.apps.androidsampleapp.R;
 import com.ossama.apps.androidsampleapp.listItems.event.ItemClickedListener;
 import com.ossama.apps.androidsampleapp.model.entity.ItemData;
+import com.ossama.apps.androidsampleapp.utils.Utils;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         ItemData itemData = listItems.get(position);
         holder.title.setText(itemData.getTitle());
-        holder.price.setText(itemData.getValue() + " " + itemData.getCurrency());
+        holder.price.setText(Utils.formatPrice(itemData.getValue(), itemData.getCurrency()));
         holder.viewContainer.setOnClickListener(
                 v -> listener.onItemClicked(listItems.get(holder.getAdapterPosition()))
         );
