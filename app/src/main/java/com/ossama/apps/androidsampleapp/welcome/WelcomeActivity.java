@@ -59,9 +59,8 @@ public class WelcomeActivity extends AppCompatActivity
         // Back button clicked
         // If the drawer layout is open, we close it
         // Otherwise, the default behavior of the back button is
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -76,8 +75,7 @@ public class WelcomeActivity extends AppCompatActivity
             startListItemsActivity();
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 

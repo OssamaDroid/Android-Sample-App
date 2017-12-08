@@ -62,5 +62,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private void setData(ItemData item) {
         itemTitle.setText(item.getTitle());
         priceValue.setText(Utils.formatPrice(item.getValue(), item.getCurrency()));
+        descriptionValue.setText(Utils.getRelevantDescription(this, item.getDescription()));
     }
 }
