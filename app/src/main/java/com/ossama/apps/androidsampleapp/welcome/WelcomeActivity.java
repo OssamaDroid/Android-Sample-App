@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.ossama.apps.androidsampleapp.R;
-import com.ossama.apps.androidsampleapp.listItems.view.ListItemsActivity;
+import com.ossama.apps.androidsampleapp.listProducts.view.ListProductsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -84,7 +84,7 @@ public class WelcomeActivity extends AppCompatActivity
 
     // Starts the Activity that shows the list of Items
     private void startListItemsActivity() {
-        Intent intent = new Intent(this, ListItemsActivity.class);
+        Intent intent = new Intent(this, ListProductsActivity.class);
         startActivity(intent);
     }
 }

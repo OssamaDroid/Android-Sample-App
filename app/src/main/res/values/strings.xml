@@ -1,15 +1,20 @@
 <resources>
     <string name="app_name">AndroidSampleApp</string>
 
+    <!-- Welcome Screen -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
     <string name="app_title">Android Sample App</string>
     <string name="welcome_screen">Home</string>
-    <string name="list_items_screen">List Items</string>
     <string name="welcome_message">Welcome On Board !</string>
     <string name="navigate_to_list_title">Navigate to the List Screen</string>
     <string name="navigation_title">Navigation</string>
+
+    <!-- Product List Screen -->
+    <string name="list_products_screen_title">List Products</string>
     <string name="no_data_title">Sorry, there\'s no data to show here :(</string>
+
+    <!-- Product Details Screen -->
+    <string name="product_details_screen_title">Product Details</string>
+
 </resources>

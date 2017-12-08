@@ -1,5 +1,6 @@
-package com.ossama.apps.androidsampleapp.listItems.view;
+package com.ossama.apps.androidsampleapp.listProducts.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -9,54 +10,59 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ossama.apps.androidsampleapp.R;
-import com.ossama.apps.androidsampleapp.listItems.ListItemsContract;
-import com.ossama.apps.androidsampleapp.listItems.adapter.ListItemsAdapter;
-import com.ossama.apps.androidsampleapp.listItems.event.ItemClickedListener;
-import com.ossama.apps.androidsampleapp.listItems.presenter.ListItemsPresenter;
+import com.ossama.apps.androidsampleapp.listProducts.ListProductsContract;
+import com.ossama.apps.androidsampleapp.listProducts.adapter.ListProductsAdapter;
+import com.ossama.apps.androidsampleapp.listProducts.event.OnProductClickedListener;
+import com.ossama.apps.androidsampleapp.listProducts.presenter.ListProductsPresenter;
 import com.ossama.apps.androidsampleapp.model.entity.ItemData;
+import com.ossama.apps.androidsampleapp.productDetails.ProductDetailsActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ListItemsActivity extends AppCompatActivity implements ListItemsContract.View, ItemClickedListener {
+import static com.ossama.apps.androidsampleapp.productDetails.ProductDetailsActivity.PRODUCT_DETAILS_EXTRA_KEY;
+
+public class ListProductsActivity extends AppCompatActivity implements ListProductsContract.View, OnProductClickedListener {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
-    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
     @BindView(R.id.no_data_text) TextView noDataText;
 
-    ListItemsContract.Presenter listItemsPresenter = new ListItemsPresenter();
+    ListProductsContract.Presenter listProductsPresenter = new ListProductsPresenter();
 
-    ListItemsAdapter adapter;
+    ListProductsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_items);
+        setContentView(R.layout.activity_list_products);
 
         // Binding the views
         ButterKnife.bind(this);
+
+        listProductsPresenter.attachView(this);
+        listProductsPresenter.loadProducts();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        listItemsPresenter.attachView(this);
+        listProductsPresenter.attachView(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         setToolbar();
-        listItemsPresenter.loadProducts();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        listItemsPresenter.detachView();
+        listProductsPresenter.detachView();
     }
 
     @Override
@@ -71,7 +77,7 @@ public class ListItemsActivity extends AppCompatActivity implements ListItemsCon
 
     @Override
     public void showItems(List<ItemData> items) {
-        adapter = new ListItemsAdapter(this, items);
+        adapter = new ListProductsAdapter(this, items);
         recyclerView.setAdapter(adapter);
         recyclerView.setVisibility(View.VISIBLE);
     }
@@ -92,8 +98,10 @@ public class ListItemsActivity extends AppCompatActivity implements ListItemsCon
     }
 
     @Override
-    public void showItemDetailsScreen(ItemData item) {
-        // TODO Start the Item Details Activity
+    public void showProductDetailsScreen(ItemData item) {
+        Intent intent = new Intent(this, ProductDetailsActivity.class);
+        intent.putExtra(PRODUCT_DETAILS_EXTRA_KEY, item);
+        startActivity(intent);
     }
 
     // Set the toolbar along with the title within it
@@ -105,11 +113,11 @@ public class ListItemsActivity extends AppCompatActivity implements ListItemsCon
         toolbar.setNavigationOnClickListener(
                 listener -> onBackPressed()
         );
-        toolbar.setTitle(R.string.list_items_screen);
+        toolbar.setTitle(R.string.list_products_screen_title);
     }
 
     @Override
-    public void onItemClicked(ItemData item) {
-        showItemDetailsScreen(item);
+    public void onProductClicked(ItemData item) {
+        showProductDetailsScreen(item);
     }
 }

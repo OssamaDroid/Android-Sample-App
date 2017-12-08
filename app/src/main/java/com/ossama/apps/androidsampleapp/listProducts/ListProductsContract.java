@@ -1,4 +1,4 @@
-package com.ossama.apps.androidsampleapp.listItems;
+package com.ossama.apps.androidsampleapp.listProducts;
 
 import com.ossama.apps.androidsampleapp.base.BasePresenter;
 import com.ossama.apps.androidsampleapp.base.BaseView;
@@ -10,7 +10,7 @@ import java.util.List;
  * Created by ossama on 12/7/17.
  */
 
-public interface ListItemsContract {
+public interface ListProductsContract {
 
     interface View extends BaseView {
 
@@ -20,7 +20,7 @@ public interface ListItemsContract {
         void hideItems();
         void showNoDataText();
         void hideNoDataText();
-        void showItemDetailsScreen(ItemData item);
+        void showProductDetailsScreen(ItemData item);
     }
 
     interface Presenter extends BasePresenter<View> {

@@ -1,6 +1,6 @@
-package com.ossama.apps.androidsampleapp.listItems.presenter;
+package com.ossama.apps.androidsampleapp.listProducts.presenter;
 
-import com.ossama.apps.androidsampleapp.listItems.ListItemsContract;
+import com.ossama.apps.androidsampleapp.listProducts.ListProductsContract;
 import com.ossama.apps.androidsampleapp.model.data.remote.ItemsDataStore;
 import com.ossama.apps.androidsampleapp.model.entity.ItemData;
 
@@ -14,17 +14,17 @@ import retrofit2.Response;
  * Created by ossama on 12/7/17.
  */
 
-public class ListItemsPresenter implements ListItemsContract.Presenter {
+public class ListProductsPresenter implements ListProductsContract.Presenter {
 
-    private ListItemsContract.View listItemsView;
+    private ListProductsContract.View listItemsView;
     private ItemsDataStore dataStore;
 
-    public ListItemsPresenter() {
+    public ListProductsPresenter() {
         dataStore = new ItemsDataStore();
     }
 
     @Override
-    public void attachView(ListItemsContract.View view) {
+    public void attachView(ListProductsContract.View view) {
         listItemsView = view;
     }
 
@@ -38,6 +38,8 @@ public class ListItemsPresenter implements ListItemsContract.Presenter {
         if (listItemsView != null) {
             // Showing the Progress bar
             listItemsView.showProgressBar();
+            listItemsView.hideNoDataText();
+            listItemsView.hideItems();
 
             dataStore.getItems(new Callback<List<ItemData>>() {
                 @Override

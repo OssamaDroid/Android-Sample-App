@@ -1,4 +1,4 @@
-package com.ossama.apps.androidsampleapp.listItems.adapter;
+package com.ossama.apps.androidsampleapp.listProducts.adapter;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ossama.apps.androidsampleapp.R;
-import com.ossama.apps.androidsampleapp.listItems.event.ItemClickedListener;
+import com.ossama.apps.androidsampleapp.listProducts.event.OnProductClickedListener;
 import com.ossama.apps.androidsampleapp.model.entity.ItemData;
 import com.ossama.apps.androidsampleapp.utils.Utils;
 
@@ -21,19 +21,19 @@ import butterknife.ButterKnife;
  * Created by ossama on 12/7/17.
  */
 
-public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.ViewHolder> {
+public class ListProductsAdapter extends RecyclerView.Adapter<ListProductsAdapter.ViewHolder> {
 
     private List<ItemData> listItems;
-    private ItemClickedListener listener;
+    private OnProductClickedListener listener;
 
-    public ListItemsAdapter(ItemClickedListener listener, List<ItemData> listItems) {
+    public ListProductsAdapter(OnProductClickedListener listener, List<ItemData> listItems) {
         this.listener = listener;
         this.listItems = listItems;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,7 +43,7 @@ public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.View
         holder.title.setText(itemData.getTitle());
         holder.price.setText(Utils.formatPrice(itemData.getValue(), itemData.getCurrency()));
         holder.viewContainer.setOnClickListener(
-                v -> listener.onItemClicked(listItems.get(holder.getAdapterPosition()))
+                v -> listener.onProductClicked(listItems.get(holder.getAdapterPosition()))
         );
     }
 
