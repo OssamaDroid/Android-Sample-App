@@ -1,5 +1,6 @@
-package com.ossama.apps.androidsampleapp.ui;
+package com.ossama.apps.androidsampleapp.welcome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.ossama.apps.androidsampleapp.R;
+import com.ossama.apps.androidsampleapp.listItems.view.ListItemsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +41,12 @@ public class WelcomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        toolbar.setTitle(R.string.welcome_screen);
+    }
+
     private void setDrawerToggle() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -65,11 +73,18 @@ public class WelcomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_list) {
-            // Handle the list click action
+            startListItemsActivity();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    // Starts the Activity that shows the list of Items
+    private void startListItemsActivity() {
+        Intent intent = new Intent(this, ListItemsActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package com.ossama.apps.androidsampleapp.model.api.service;
+package com.ossama.apps.androidsampleapp.model.data.api.service;
 
 import com.ossama.apps.androidsampleapp.model.entity.ItemData;
 
@@ -13,6 +13,6 @@ import retrofit2.http.GET;
 
 public interface DataService {
 
-    @GET("/data")
+    @GET("data/")
     Call<List<ItemData>> getData();
 }

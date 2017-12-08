@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ossama.apps.androidsampleapp.welcome.WelcomeActivity">
+    tools:context="com.ossama.apps.androidsampleapp.listItems.view.ListItemsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -26,21 +26,29 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/welcome_background" />
+            android:overScrollMode="never"
+            app:layoutManager="LinearLayoutManager" />
 
-        <TextView
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/welcome_screen_margin"
-            android:layout_marginStart="@dimen/welcome_screen_margin"
-            android:layout_marginTop="@dimen/welcome_screen_margin"
-            android:text="@string/welcome_message"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/welcome_message_size"
-            android:textStyle="bold" />
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+
+        <TextView
+            android:id="@+id/no_data_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:text="@string/no_data_title"
+            android:textSize="@dimen/no_data_text_size" />
 
     </FrameLayout>
 
