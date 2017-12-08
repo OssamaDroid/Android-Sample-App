@@ -102,6 +102,7 @@ public class ListProductsActivity extends AppCompatActivity implements ListProdu
         Intent intent = new Intent(this, ProductDetailsActivity.class);
         intent.putExtra(PRODUCT_DETAILS_EXTRA_KEY, item);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     // Set the toolbar along with the title within it

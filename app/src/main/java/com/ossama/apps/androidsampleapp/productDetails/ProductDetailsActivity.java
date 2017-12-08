@@ -51,7 +51,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         toolbar.setNavigationOnClickListener(
-                listener -> onBackPressed()
+                listener -> {
+                    onBackPressed();
+                    overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                }
         );
         toolbar.setTitle(R.string.product_details_screen_title);
     }
